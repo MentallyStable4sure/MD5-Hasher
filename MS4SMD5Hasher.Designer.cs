@@ -31,7 +31,7 @@
             browseButton = new Button();
             pathBox = new TextBox();
             folderBrowser = new FolderBrowserDialog();
-            startButton = new Button();
+            startEncodeButton = new Button();
             loadingAnimation = new PictureBox();
             separatorBox = new TextBox();
             closeButton = new Button();
@@ -39,8 +39,10 @@
             themeBox = new ComboBox();
             compareModeButton = new Button();
             encodeModeButton = new Button();
-            label1 = new Label();
+            labelOr = new Label();
             pathBox2 = new TextBox();
+            startCompareButton = new Button();
+            menuButton = new Button();
             ((System.ComponentModel.ISupportInitialize)loadingAnimation).BeginInit();
             SuspendLayout();
             // 
@@ -73,19 +75,19 @@
             pathBox.TextAlign = HorizontalAlignment.Center;
             pathBox.Visible = false;
             // 
-            // startButton
+            // startEncodeButton
             // 
-            startButton.BackColor = SystemColors.Control;
-            startButton.FlatAppearance.BorderSize = 0;
-            startButton.Font = new Font("Century Gothic", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
-            startButton.Location = new Point(117, 519);
-            startButton.Name = "startButton";
-            startButton.Size = new Size(155, 30);
-            startButton.TabIndex = 2;
-            startButton.Text = "Start Encoding";
-            startButton.UseVisualStyleBackColor = false;
-            startButton.Visible = false;
-            startButton.Click += startButton_Click;
+            startEncodeButton.BackColor = SystemColors.Control;
+            startEncodeButton.FlatAppearance.BorderSize = 0;
+            startEncodeButton.Font = new Font("Century Gothic", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            startEncodeButton.Location = new Point(117, 519);
+            startEncodeButton.Name = "startEncodeButton";
+            startEncodeButton.Size = new Size(155, 30);
+            startEncodeButton.TabIndex = 2;
+            startEncodeButton.Text = "Start Encoding";
+            startEncodeButton.UseVisualStyleBackColor = false;
+            startEncodeButton.Visible = false;
+            startEncodeButton.Click += startButton_Click;
             // 
             // loadingAnimation
             // 
@@ -180,17 +182,18 @@
             encodeModeButton.TabIndex = 13;
             encodeModeButton.Text = "Encode checksums from folder";
             encodeModeButton.UseVisualStyleBackColor = false;
+            encodeModeButton.Click += encodeModeButton_Click;
             // 
-            // label1
+            // labelOr
             // 
-            label1.AutoSize = true;
-            label1.BackColor = Color.IndianRed;
-            label1.Font = new Font("Perpetua Titling MT", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(183, 253);
-            label1.Name = "label1";
-            label1.Size = new Size(35, 20);
-            label1.TabIndex = 14;
-            label1.Text = "OR";
+            labelOr.AutoSize = true;
+            labelOr.BackColor = Color.IndianRed;
+            labelOr.Font = new Font("Perpetua Titling MT", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            labelOr.Location = new Point(184, 253);
+            labelOr.Name = "labelOr";
+            labelOr.Size = new Size(35, 20);
+            labelOr.TabIndex = 14;
+            labelOr.Text = "OR";
             // 
             // pathBox2
             // 
@@ -205,6 +208,29 @@
             pathBox2.TextAlign = HorizontalAlignment.Center;
             pathBox2.Visible = false;
             // 
+            // startCompareButton
+            // 
+            startCompareButton.BackColor = SystemColors.Control;
+            startCompareButton.FlatAppearance.BorderSize = 0;
+            startCompareButton.Font = new Font("Century Gothic", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            startCompareButton.Location = new Point(117, 519);
+            startCompareButton.Name = "startCompareButton";
+            startCompareButton.Size = new Size(155, 30);
+            startCompareButton.TabIndex = 16;
+            startCompareButton.Text = "Start Comparing";
+            startCompareButton.UseVisualStyleBackColor = false;
+            startCompareButton.Visible = false;
+            // 
+            // menuButton
+            // 
+            menuButton.Location = new Point(4, 2);
+            menuButton.Name = "menuButton";
+            menuButton.Size = new Size(56, 27);
+            menuButton.TabIndex = 17;
+            menuButton.Text = "<";
+            menuButton.UseVisualStyleBackColor = true;
+            menuButton.Click += menuButton_Click;
+            // 
             // MS4SMD5Hasher
             // 
             AutoScaleDimensions = new SizeF(10F, 16F);
@@ -212,7 +238,8 @@
             BackgroundImage = Properties.Resources.beermaf;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(390, 561);
-            Controls.Add(label1);
+            Controls.Add(menuButton);
+            Controls.Add(labelOr);
             Controls.Add(encodeModeButton);
             Controls.Add(compareModeButton);
             Controls.Add(themeBox);
@@ -220,10 +247,11 @@
             Controls.Add(closeButton);
             Controls.Add(separatorBox);
             Controls.Add(loadingAnimation);
-            Controls.Add(startButton);
             Controls.Add(browseButton);
             Controls.Add(pathBox);
             Controls.Add(pathBox2);
+            Controls.Add(startEncodeButton);
+            Controls.Add(startCompareButton);
             DoubleBuffered = true;
             Font = new Font("Perpetua Titling MT", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             FormBorderStyle = FormBorderStyle.None;
@@ -244,7 +272,7 @@
         private Button browseButton;
         private TextBox pathBox;
         private FolderBrowserDialog folderBrowser;
-        private Button startButton;
+        private Button startEncodeButton;
         private PictureBox loadingAnimation;
         private TextBox separatorBox;
         private Button closeButton;
@@ -255,7 +283,9 @@
         private Label orLabel;
         private Button compareModeButton;
         private Button encodeModeButton;
-        private Label label1;
+        private Label labelOr;
         private TextBox pathBox2;
+        private Button startCompareButton;
+        private Button menuButton;
     }
 }

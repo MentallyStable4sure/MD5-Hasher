@@ -1,3 +1,5 @@
+using MS4S_MD5Hasher.Data;
+using MS4S_MD5Hasher.Handlers;
 
 namespace MS4S_MD5Hasher
 {
@@ -13,15 +15,19 @@ namespace MS4S_MD5Hasher
         public MS4SMD5Hasher()
         {
             InitializeComponent();
+
             new ThemeController(this, themeBox);
             hasher = new Hasher(folderBrowser);
             comparer = new HashComparer(pathBox, pathBox2);
-            presenter = new Presenter(this);
+            presenter = new Presenter(
+                new UIItem[]
+                {
+                    new ComparerUIData(pathBox, pathBox2, startCompareButton),
+                    new EncoderUIData(pathBox, filenameBox, separatorBox, startEncodeButton, browseButton),
+                    new MenuUIData(labelOr, encodeModeButton, compareModeButton)
+                });
 
-            //ShowRestUI(false);
-
-            //pathBox.PlaceholderText = "Choose path where to take files to encode";
-            //pathBox.Text = string.Empty;
+            presenter.ShowUI(Presenter.UIPage.Menu);
         }
 
         private void button1_Click(object sender, EventArgs e) => BrowseDirectory();
@@ -35,7 +41,7 @@ namespace MS4S_MD5Hasher
             if (dialogResult != DialogResult.OK)
             {
                 pathBox.Text = string.Empty;
-                startButton.Visible = false;
+                startEncodeButton.Visible = false;
                 return;
             }
 
@@ -51,13 +57,6 @@ namespace MS4S_MD5Hasher
             pathBox.Text = path;
 
             //ShowRestUI(true);
-        }
-
-        public void ShowCompareUI(bool state)
-        {
-            startButton.Visible = state;
-            filenameBox.Visible = state;
-            separatorBox.Visible = state;
         }
 
         private void startButton_Click(object sender, EventArgs e)
@@ -77,9 +76,10 @@ namespace MS4S_MD5Hasher
 
         private void closeButton_Click(object sender, EventArgs e) => Application.Exit();
 
-        private void compareModeButton_Click(object sender, EventArgs e)
-        {
-            comparer
-        }
+        private void compareModeButton_Click(object sender, EventArgs e) => presenter.ShowUI(Presenter.UIPage.Comparer);
+
+        private void encodeModeButton_Click(object sender, EventArgs e) => presenter.ShowUI(Presenter.UIPage.Encoder);
+
+        private void menuButton_Click(object sender, EventArgs e) => presenter.ShowUI(Presenter.UIPage.Menu);
     }
 }

@@ -1,6 +1,6 @@
 ﻿using MS4S_MD5Hasher.Data;
 
-namespace MS4S_MD5Hasher
+namespace MS4S_MD5Hasher.Handlers
 {
 
     public partial class Presenter

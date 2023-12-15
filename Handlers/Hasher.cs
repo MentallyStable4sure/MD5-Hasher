@@ -1,7 +1,7 @@
 ﻿
 using System.Security.Cryptography;
 
-namespace MS4S_MD5Hasher
+namespace MS4S_MD5Hasher.Handlers
 {
     internal class Hasher
     {
