@@ -14,7 +14,7 @@
 
 <details>
 <summary>English</summary>
-[Win App] [Lightweight] Small application to get total checksum of all files in folder (and sub-folders inside) and write it in 1 .txt file with custom separator and filename ie [ filepath | hashsum ], soon will be compare methods aswell
+[Win App] [Lightweight] Small application to get total checksum of all files in folder (and sub-folders inside) and write it in 1 .txt file with custom separator and filename ie [ filepath | hashsum ], can be used to compare 2 hashsum files, just click Compare 2 hashes and paste your 2 files, set 2 separators for each file (for example : or ♡♡♡♡ like we did in the example) and it will parse it. Thats all, have a good day.
 
 Output after pressing Start Encoding:
 ---
@@ -40,7 +40,7 @@ Release\net7.0-windows\totalhashes.txt ♡♡♡♡ 837c3dc87f8b47074c5eedfaeae9
 
 <details>
 <summary>Russian</summary>
-[Виндоус Приложение] [Легковесная аппка] Маленькое приложение чтобы создать текстовый документ со всеми хеш-суммами в виде [ ФАЙЛ (ваш разьеденитель) ХЕШ ], позволяет сделать все это с настраиваемым разделителем и заходит в подпапки внутри директории. Так же вскоре добавиться метод на сравнение двух хеш-сумм файлов.
+[Виндоус Приложение] [Легковесная аппка] Маленькое приложение чтобы создать текстовый документ со всеми хеш-суммами в виде [ ФАЙЛ (ваш разьеденитель) ХЕШ ], позволяет сделать все это с настраиваемым разделителем и заходит в подпапки внутри директории. Так же можно использовать как сравнения на 2 хешсуммы, просто выберите в начале сравнение - укажите 2 файла, укажите их сепараторы (например в нашем примере были указаны сердечки  ♡♡♡♡ , но если вы используете другой файл то конечно нужно узнать какой там разделить, по умолчанию это : - двоеточие) и нажмите на Start Comparing. Вот и все, приятного пользования.
 
 Вот что получается на выходе после того как мы выбрали папку:
 ---
