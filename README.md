@@ -1,6 +1,16 @@
 # MS4S MD5-Hasher
 
-![image](https://github.com/MentallyStable4sure/MD5-Hasher/assets/62771181/4cf073dd-6951-4759-900f-13e394479006) ![image](https://github.com/MentallyStable4sure/MD5-Hasher/assets/62771181/76576b71-1696-44d8-b9ec-e6a94bb3ff93)
+![image](https://github.com/MentallyStable4sure/MD5-Hasher/assets/62771181/96df6e22-69d3-4f1b-af09-dd489b99a6d9) ![image](https://github.com/MentallyStable4sure/MD5-Hasher/assets/62771181/a2def17d-c18d-4766-b36d-d0270e945762) 
+
+<details>
+<summary>More Screenshots</summary>
+
+![image](https://github.com/MentallyStable4sure/MD5-Hasher/assets/62771181/840dd833-0688-4c87-bce1-8357b88b0ba1) ![image](https://github.com/MentallyStable4sure/MD5-Hasher/assets/62771181/19dfa0dd-5158-42b9-b930-bfdf1042ac1e)
+![image](https://github.com/MentallyStable4sure/MD5-Hasher/assets/62771181/a6c45ea1-acf8-452f-a728-0e61c41a5e53) ![image](https://github.com/MentallyStable4sure/MD5-Hasher/assets/62771181/412e6a84-c50f-4d7f-b90a-72863ab933e1)
+
+
+</details>
+
 
 <details>
 <summary>English</summary>
@@ -60,7 +70,7 @@ Release\net7.0-windows\totalhashes.txt ♡♡♡♡ 837c3dc87f8b47074c5eedfaeae9
 ### What is planned and what is done already
 
 - ❌ Arguments-friendly (to launch app without UI and set arguments like --compare [path] pr --checksums [path])
-- ❌ Compare method as additional functionality
+- ✅ Compare method as additional functionality
 - ✅ Checksum from directory for all the files inside folder and subfolder divided by separator ie [Path | Hash]
 - ✅ Themes (idk why tho)
 - ✅ Custom filenames and separators without limits
