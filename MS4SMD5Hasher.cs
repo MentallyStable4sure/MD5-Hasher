@@ -16,48 +16,26 @@ namespace MS4S_MD5Hasher
         {
             InitializeComponent();
 
+            var comparerData = new ComparerUIData(pathBox, pathBox2, startCompareButton);
+            var encoderData = new EncoderUIData(pathBox, filenameBox, separatorBox, startEncodeButton, browseButton);
+
             new ThemeController(this, themeBox);
-            hasher = new Hasher(folderBrowser);
+            hasher = new Hasher(folderBrowser, encoderData);
             comparer = new HashComparer(pathBox, pathBox2);
             presenter = new Presenter(
                 new UIItem[]
                 {
-                    new ComparerUIData(pathBox, pathBox2, startCompareButton),
-                    new EncoderUIData(pathBox, filenameBox, separatorBox, startEncodeButton, browseButton),
+                    comparerData,
+                    encoderData,
                     new MenuUIData(labelOr, encodeModeButton, compareModeButton)
                 });
 
             presenter.ShowUI(Presenter.UIPage.Menu);
         }
 
-        private void button1_Click(object sender, EventArgs e) => BrowseDirectory();
+        private void button1_Click(object sender, EventArgs e) => hasher.BrowseDirectory();
 
         private void UpdatePath(object sender, FileSystemEventArgs e) => pathBox.Text = e.FullPath;
-
-        public void BrowseDirectory()
-        {
-            var dialogResult = folderBrowser.ShowDialog();
-
-            if (dialogResult != DialogResult.OK)
-            {
-                pathBox.Text = string.Empty;
-                startEncodeButton.Visible = false;
-                return;
-            }
-
-            var path = folderBrowser.SelectedPath;
-            if (!Directory.Exists(path) && path.Length > 1)
-            {
-                DialogResult = DialogResult.Cancel;
-                pathBox.Text = string.Empty;
-                return;
-            }
-
-            folderBrowser.InitialDirectory = path;
-            pathBox.Text = path;
-
-            //ShowRestUI(true);
-        }
 
         private void startButton_Click(object sender, EventArgs e)
         {
@@ -65,12 +43,7 @@ namespace MS4S_MD5Hasher
             if (separatorBox.Text.Length > 0) separator = separatorBox.Text;
 
             loadingAnimation.Visible = true;
-            string cachedPath = pathBox.Text;
-            pathBox.Text = "Computing MD5 hashes...";
-
             hasher.Checksum(filename, separator);
-
-            pathBox.Text = cachedPath;
             loadingAnimation.Visible = false;
         }
 

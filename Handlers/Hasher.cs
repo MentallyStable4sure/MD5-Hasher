@@ -1,4 +1,5 @@
 ﻿
+using MS4S_MD5Hasher.Data;
 using System.Security.Cryptography;
 
 namespace MS4S_MD5Hasher.Handlers
@@ -6,16 +7,44 @@ namespace MS4S_MD5Hasher.Handlers
     internal class Hasher
     {
         private FolderBrowserDialog folderBrowser;
+        private EncoderUIData uiData;
 
         private const string FILE_FORMAT = ".txt";
 
-        public Hasher(FolderBrowserDialog folderBrowser)
+        public Hasher(FolderBrowserDialog folderBrowser, EncoderUIData uiData)
         {
+            this.uiData = uiData;
             this.folderBrowser = folderBrowser;
             string path = Directory.GetCurrentDirectory();
 
             this.folderBrowser.InitialDirectory = path;
             this.folderBrowser.SelectedPath = path;
+        }
+
+        public void BrowseDirectory()
+        {
+            var dialogResult = folderBrowser.ShowDialog();
+
+            if (dialogResult != DialogResult.OK)
+            {
+                uiData.PathBox.Text = string.Empty;
+                folderBrowser.SelectedPath = string.Empty;
+                uiData.Button.Visible = false;
+                return;
+            }
+
+            var path = folderBrowser.SelectedPath;
+            if (!Directory.Exists(path) && path.Length > 1)
+            {
+                dialogResult = DialogResult.Cancel;
+                folderBrowser.SelectedPath = string.Empty;
+                uiData.PathBox.Text = string.Empty;
+                return;
+            }
+
+            folderBrowser.InitialDirectory = path;
+            folderBrowser.SelectedPath = path;
+            uiData.PathBox.Text = path;
         }
 
         public void Checksum(string customFilename = "checksum", string customSeparator = ":")
@@ -25,6 +54,9 @@ namespace MS4S_MD5Hasher.Handlers
                 MessageBox.Show("Please, provide a path which will be used to calculate all files and hashes for them");
                 return;
             }
+
+            string cachedPath = uiData.PathBox.Text;
+            uiData.PathBox.Text = "Computing MD5 hashes...";
 
             string abosulteDirectory = folderBrowser.SelectedPath;
             string hashListFile = Path.Combine(abosulteDirectory, $"{customFilename}{FILE_FORMAT}");
@@ -55,7 +87,10 @@ namespace MS4S_MD5Hasher.Handlers
                     }
                 }
             }
+
+            uiData.PathBox.Text = "Writing hashes to a file...";
             WriteToFile(hashListFile, lines);
+            uiData.PathBox.Text = cachedPath;
         }
 
         private void WriteToFile(string fileFullPath, string[] lines)
