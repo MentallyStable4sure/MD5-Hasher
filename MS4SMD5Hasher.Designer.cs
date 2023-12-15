@@ -157,7 +157,7 @@
             themeBox.Font = new Font("Perpetua Titling MT", 8F, FontStyle.Bold, GraphicsUnit.Point);
             themeBox.ForeColor = Color.Indigo;
             themeBox.FormattingEnabled = true;
-            themeBox.Items.AddRange(new object[] { "Maf with Beer", "Underwater Flow", "Elf Forest", "Church Goth", "Ayaka Black Bra", "Sona Cyan Bra", "Gwen Shows Panties", "Raiden Purple Bra", "[NSFW!] Goth Raiden", "[NSFW!] Yelan Bored" });
+            themeBox.Items.AddRange(new object[] { "Maf with Beer", "Underwater Flow", "Elf Forest", "Church Goth", "Ayaka Black Bra", "Sona Cyan Bra", "Raiden Purple Bra" });
             themeBox.Location = new Point(-150, -12);
             themeBox.Name = "themeBox";
             themeBox.Size = new Size(161, 21);

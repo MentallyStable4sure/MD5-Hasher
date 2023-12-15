@@ -11,10 +11,7 @@ namespace MS4S_MD5Hasher.Handlers
         ChurchGoth,
         AyakaBlackBra,
         SonaCyanBra,
-        GwenShowsPanties,
-        RaidenPurpleBra,
-        RaidenNSFW,
-        YelanNSFW
+        RaidenPurpleBra
     }
 
     internal class ThemeController
@@ -55,15 +52,6 @@ namespace MS4S_MD5Hasher.Handlers
                     break;
                 case Themes.AyakaBlackBra:
                     map = Resources.ayaka;
-                    break;
-                case Themes.GwenShowsPanties:
-                    map = Resources.gwenshowoff;
-                    break;
-                case Themes.RaidenNSFW:
-                    map = Resources.raiden;
-                    break;
-                case Themes.YelanNSFW:
-                    map = Resources.yelan;
                     break;
 
                 default:

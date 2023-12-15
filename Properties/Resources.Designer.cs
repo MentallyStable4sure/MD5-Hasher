@@ -113,29 +113,9 @@ namespace MS4S_MD5Hasher.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap gwenshowoff {
-            get {
-                object obj = ResourceManager.GetObject("gwenshowoff", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap loading {
             get {
                 object obj = ResourceManager.GetObject("loading", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap raiden {
-            get {
-                object obj = ResourceManager.GetObject("raiden", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -156,16 +136,6 @@ namespace MS4S_MD5Hasher.Properties {
         internal static System.Drawing.Bitmap sona {
             get {
                 object obj = ResourceManager.GetObject("sona", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap yelan {
-            get {
-                object obj = ResourceManager.GetObject("yelan", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
