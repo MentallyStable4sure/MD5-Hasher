@@ -9,19 +9,20 @@ namespace MS4S_MD5Hasher
         private string separator = ":";
 
         private Hasher hasher;
-        private HashComparer comparer;
         private Presenter presenter;
 
         public MS4SMD5Hasher()
         {
             InitializeComponent();
 
-            var comparerData = new ComparerUIData(pathBox, pathBox2, startCompareButton);
+            var comparerData = new ComparerUIData(compareBox1, compareBox2, separatorCompare1,
+                separatorCompare2, startCompareButton, browseFirstFile, browseSecondFile);
             var encoderData = new EncoderUIData(pathBox, filenameBox, separatorBox, startEncodeButton, browseButton);
 
             new ThemeController(this, themeBox); //registering theme controller and leaving it as it is (it will subscribe on theme change)
+            new HashComparer(comparerData); //the same, since we are providing everything inside ComparerUIData, no need to store it here
+
             hasher = new Hasher(folderBrowser, encoderData);
-            comparer = new HashComparer(pathBox, pathBox2);
             presenter = new Presenter(
                 new UIItem[]
                 {

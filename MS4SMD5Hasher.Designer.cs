@@ -40,9 +40,14 @@
             compareModeButton = new Button();
             encodeModeButton = new Button();
             labelOr = new Label();
-            pathBox2 = new TextBox();
+            compareBox2 = new TextBox();
             startCompareButton = new Button();
             menuButton = new Button();
+            separatorCompare1 = new TextBox();
+            separatorCompare2 = new TextBox();
+            compareBox1 = new TextBox();
+            browseFirstFile = new Button();
+            browseSecondFile = new Button();
             ((System.ComponentModel.ISupportInitialize)loadingAnimation).BeginInit();
             SuspendLayout();
             // 
@@ -195,18 +200,18 @@
             labelOr.TabIndex = 14;
             labelOr.Text = "OR";
             // 
-            // pathBox2
+            // compareBox2
             // 
-            pathBox2.Enabled = false;
-            pathBox2.Font = new Font("Perpetua Titling MT", 8F, FontStyle.Bold, GraphicsUnit.Point);
-            pathBox2.ForeColor = Color.DarkRed;
-            pathBox2.Location = new Point(-4, 291);
-            pathBox2.Multiline = true;
-            pathBox2.Name = "pathBox2";
-            pathBox2.Size = new Size(397, 36);
-            pathBox2.TabIndex = 15;
-            pathBox2.TextAlign = HorizontalAlignment.Center;
-            pathBox2.Visible = false;
+            compareBox2.Enabled = false;
+            compareBox2.Font = new Font("Perpetua Titling MT", 8F, FontStyle.Bold, GraphicsUnit.Point);
+            compareBox2.ForeColor = Color.DarkRed;
+            compareBox2.Location = new Point(-4, 291);
+            compareBox2.Multiline = true;
+            compareBox2.Name = "compareBox2";
+            compareBox2.Size = new Size(397, 36);
+            compareBox2.TabIndex = 15;
+            compareBox2.TextAlign = HorizontalAlignment.Center;
+            compareBox2.Visible = false;
             // 
             // startCompareButton
             // 
@@ -231,6 +236,75 @@
             menuButton.UseVisualStyleBackColor = true;
             menuButton.Click += menuButton_Click;
             // 
+            // separatorCompare1
+            // 
+            separatorCompare1.Font = new Font("Perpetua Titling MT", 8F, FontStyle.Bold, GraphicsUnit.Point);
+            separatorCompare1.ForeColor = SystemColors.ActiveCaptionText;
+            separatorCompare1.Location = new Point(120, 167);
+            separatorCompare1.MaxLength = 27000;
+            separatorCompare1.Name = "separatorCompare1";
+            separatorCompare1.PlaceholderText = "Custom Separator ':'";
+            separatorCompare1.Size = new Size(154, 20);
+            separatorCompare1.TabIndex = 18;
+            separatorCompare1.TextAlign = HorizontalAlignment.Center;
+            separatorCompare1.Visible = false;
+            // 
+            // separatorCompare2
+            // 
+            separatorCompare2.Font = new Font("Perpetua Titling MT", 8F, FontStyle.Bold, GraphicsUnit.Point);
+            separatorCompare2.ForeColor = SystemColors.ActiveCaptionText;
+            separatorCompare2.Location = new Point(118, 339);
+            separatorCompare2.MaxLength = 27000;
+            separatorCompare2.Name = "separatorCompare2";
+            separatorCompare2.PlaceholderText = "Custom Separator ':'";
+            separatorCompare2.Size = new Size(154, 20);
+            separatorCompare2.TabIndex = 19;
+            separatorCompare2.TextAlign = HorizontalAlignment.Center;
+            separatorCompare2.Visible = false;
+            // 
+            // compareBox1
+            // 
+            compareBox1.Enabled = false;
+            compareBox1.Font = new Font("Perpetua Titling MT", 8F, FontStyle.Bold, GraphicsUnit.Point);
+            compareBox1.ForeColor = Color.DarkRed;
+            compareBox1.Location = new Point(-4, 201);
+            compareBox1.Multiline = true;
+            compareBox1.Name = "compareBox1";
+            compareBox1.Size = new Size(397, 36);
+            compareBox1.TabIndex = 20;
+            compareBox1.TextAlign = HorizontalAlignment.Center;
+            compareBox1.Visible = false;
+            // 
+            // browseFirstFile
+            // 
+            browseFirstFile.BackColor = SystemColors.Control;
+            browseFirstFile.BackgroundImageLayout = ImageLayout.Stretch;
+            browseFirstFile.FlatAppearance.BorderSize = 0;
+            browseFirstFile.Font = new Font("Century Gothic", 8.5F, FontStyle.Bold, GraphicsUnit.Point);
+            browseFirstFile.Location = new Point(149, 133);
+            browseFirstFile.Name = "browseFirstFile";
+            browseFirstFile.Size = new Size(101, 28);
+            browseFirstFile.TabIndex = 21;
+            browseFirstFile.Text = "Browse File 1";
+            browseFirstFile.TextImageRelation = TextImageRelation.TextAboveImage;
+            browseFirstFile.UseVisualStyleBackColor = false;
+            browseFirstFile.Visible = false;
+            // 
+            // browseSecondFile
+            // 
+            browseSecondFile.BackColor = SystemColors.Control;
+            browseSecondFile.BackgroundImageLayout = ImageLayout.Stretch;
+            browseSecondFile.FlatAppearance.BorderSize = 0;
+            browseSecondFile.Font = new Font("Century Gothic", 8.5F, FontStyle.Bold, GraphicsUnit.Point);
+            browseSecondFile.Location = new Point(145, 365);
+            browseSecondFile.Name = "browseSecondFile";
+            browseSecondFile.Size = new Size(101, 28);
+            browseSecondFile.TabIndex = 22;
+            browseSecondFile.Text = "Browse File 2";
+            browseSecondFile.TextImageRelation = TextImageRelation.TextAboveImage;
+            browseSecondFile.UseVisualStyleBackColor = false;
+            browseSecondFile.Visible = false;
+            // 
             // MS4SMD5Hasher
             // 
             AutoScaleDimensions = new SizeF(10F, 16F);
@@ -238,6 +312,11 @@
             BackgroundImage = Properties.Resources.beermaf;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(390, 561);
+            Controls.Add(browseSecondFile);
+            Controls.Add(browseFirstFile);
+            Controls.Add(compareBox1);
+            Controls.Add(separatorCompare2);
+            Controls.Add(separatorCompare1);
             Controls.Add(menuButton);
             Controls.Add(labelOr);
             Controls.Add(encodeModeButton);
@@ -249,7 +328,7 @@
             Controls.Add(loadingAnimation);
             Controls.Add(browseButton);
             Controls.Add(pathBox);
-            Controls.Add(pathBox2);
+            Controls.Add(compareBox2);
             Controls.Add(startEncodeButton);
             Controls.Add(startCompareButton);
             DoubleBuffered = true;
@@ -284,8 +363,13 @@
         private Button compareModeButton;
         private Button encodeModeButton;
         private Label labelOr;
-        private TextBox pathBox2;
+        private TextBox compareBox2;
         private Button startCompareButton;
         private Button menuButton;
+        private TextBox separatorCompare1;
+        private TextBox separatorCompare2;
+        private TextBox compareBox1;
+        private Button browseFirstFile;
+        private Button browseSecondFile;
     }
 }

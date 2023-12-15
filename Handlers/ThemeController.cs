@@ -1,7 +1,7 @@
 ﻿using MS4S_MD5Hasher.Properties;
 
 //Not much goin here, just a themes controller that can switch up between theme backs
-namespace MS4S_MD5Hasher
+namespace MS4S_MD5Hasher.Handlers
 {
     public enum Themes
     {
