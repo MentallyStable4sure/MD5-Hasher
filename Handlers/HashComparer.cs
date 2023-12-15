@@ -65,9 +65,9 @@ namespace MS4S_MD5Hasher.Handlers
 
             for (int i = 0; i < firstFileLines.Length; i++)
             {
-                if (firstFileLines[i].Length <= 1) continue; //prob empty line we dont care about that
+                if (firstFileLines[i].Length <= 2) continue; //prob empty line we dont care about that
                 string[] split = firstFileLines[i].Split(firstSeparator);
-                if(split == null || split.Length < 1)
+                if(split == null || split.Length < 2)
                 {
                     info.AppendLine($"[Error] We tried to split hash with path in half but we couldn't, double check separator, you gave us: '{firstSeparator}', but looks like its not it");
                     SignWithDetails(info, firstFile, firstFileLines.Length, secondFile, secondFileLines.Length);
@@ -94,7 +94,7 @@ namespace MS4S_MD5Hasher.Handlers
             foreach (string secondLine in whereToCheck)
             {
                 string[] split = secondLine.Split(separator);
-                if (split == null || split.Length < 1) return false; //wrong separator we couldnt cut
+                if (split == null || split.Length < 2) return false; //wrong separator we couldnt cut
 
                 string secondHash = secondLine.Split(separator)[1]; //second file separator TODO: custom player separator
                 if (secondHash != firstHash) continue; //didnt find match, check next
