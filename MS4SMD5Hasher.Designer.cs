@@ -37,6 +37,10 @@
             closeButton = new Button();
             filenameBox = new TextBox();
             themeBox = new ComboBox();
+            compareModeButton = new Button();
+            encodeModeButton = new Button();
+            label1 = new Label();
+            pathBox2 = new TextBox();
             ((System.ComponentModel.ISupportInitialize)loadingAnimation).BeginInit();
             SuspendLayout();
             // 
@@ -46,13 +50,14 @@
             browseButton.BackgroundImageLayout = ImageLayout.Stretch;
             browseButton.FlatAppearance.BorderSize = 0;
             browseButton.Font = new Font("Century Gothic", 8.5F, FontStyle.Bold, GraphicsUnit.Point);
-            browseButton.Location = new Point(141, 491);
+            browseButton.Location = new Point(145, 491);
             browseButton.Name = "browseButton";
             browseButton.Size = new Size(101, 28);
             browseButton.TabIndex = 0;
             browseButton.Text = "Browse Folder";
             browseButton.TextImageRelation = TextImageRelation.TextAboveImage;
             browseButton.UseVisualStyleBackColor = false;
+            browseButton.Visible = false;
             browseButton.Click += button1_Click;
             // 
             // pathBox
@@ -60,24 +65,26 @@
             pathBox.Enabled = false;
             pathBox.Font = new Font("Perpetua Titling MT", 8F, FontStyle.Bold, GraphicsUnit.Point);
             pathBox.ForeColor = Color.DarkRed;
-            pathBox.Location = new Point(-2, 37);
+            pathBox.Location = new Point(-5, 201);
             pathBox.Multiline = true;
             pathBox.Name = "pathBox";
             pathBox.Size = new Size(397, 36);
             pathBox.TabIndex = 1;
             pathBox.TextAlign = HorizontalAlignment.Center;
+            pathBox.Visible = false;
             // 
             // startButton
             // 
             startButton.BackColor = SystemColors.Control;
             startButton.FlatAppearance.BorderSize = 0;
             startButton.Font = new Font("Century Gothic", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
-            startButton.Location = new Point(115, 520);
+            startButton.Location = new Point(117, 519);
             startButton.Name = "startButton";
             startButton.Size = new Size(155, 30);
             startButton.TabIndex = 2;
             startButton.Text = "Start Encoding";
             startButton.UseVisualStyleBackColor = false;
+            startButton.Visible = false;
             startButton.Click += startButton_Click;
             // 
             // loadingAnimation
@@ -98,13 +105,14 @@
             // 
             separatorBox.Font = new Font("Perpetua Titling MT", 8F, FontStyle.Bold, GraphicsUnit.Point);
             separatorBox.ForeColor = SystemColors.ActiveCaptionText;
-            separatorBox.Location = new Point(48, 11);
+            separatorBox.Location = new Point(23, 253);
             separatorBox.MaxLength = 27000;
             separatorBox.Name = "separatorBox";
             separatorBox.PlaceholderText = "Custom Separator";
             separatorBox.Size = new Size(154, 20);
             separatorBox.TabIndex = 4;
             separatorBox.TextAlign = HorizontalAlignment.Center;
+            separatorBox.Visible = false;
             // 
             // closeButton
             // 
@@ -125,13 +133,14 @@
             // 
             filenameBox.Font = new Font("Perpetua Titling MT", 8F, FontStyle.Bold, GraphicsUnit.Point);
             filenameBox.ForeColor = SystemColors.ActiveCaptionText;
-            filenameBox.Location = new Point(208, 11);
+            filenameBox.Location = new Point(225, 254);
             filenameBox.MaxLength = 27000;
             filenameBox.Name = "filenameBox";
             filenameBox.PlaceholderText = "Custom File Name";
             filenameBox.Size = new Size(131, 20);
             filenameBox.TabIndex = 8;
             filenameBox.TextAlign = HorizontalAlignment.Center;
+            filenameBox.Visible = false;
             // 
             // themeBox
             // 
@@ -147,6 +156,55 @@
             themeBox.Size = new Size(161, 21);
             themeBox.TabIndex = 10;
             // 
+            // compareModeButton
+            // 
+            compareModeButton.BackColor = SystemColors.Control;
+            compareModeButton.FlatAppearance.BorderSize = 0;
+            compareModeButton.Font = new Font("Century Gothic", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            compareModeButton.Location = new Point(119, 193);
+            compareModeButton.Name = "compareModeButton";
+            compareModeButton.Size = new Size(166, 51);
+            compareModeButton.TabIndex = 12;
+            compareModeButton.Text = "Compare 2 checksum files";
+            compareModeButton.UseVisualStyleBackColor = false;
+            compareModeButton.Click += compareModeButton_Click;
+            // 
+            // encodeModeButton
+            // 
+            encodeModeButton.BackColor = SystemColors.Control;
+            encodeModeButton.FlatAppearance.BorderSize = 0;
+            encodeModeButton.Font = new Font("Century Gothic", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            encodeModeButton.Location = new Point(117, 281);
+            encodeModeButton.Name = "encodeModeButton";
+            encodeModeButton.Size = new Size(166, 52);
+            encodeModeButton.TabIndex = 13;
+            encodeModeButton.Text = "Encode checksums from folder";
+            encodeModeButton.UseVisualStyleBackColor = false;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.BackColor = Color.IndianRed;
+            label1.Font = new Font("Perpetua Titling MT", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.Location = new Point(183, 253);
+            label1.Name = "label1";
+            label1.Size = new Size(35, 20);
+            label1.TabIndex = 14;
+            label1.Text = "OR";
+            // 
+            // pathBox2
+            // 
+            pathBox2.Enabled = false;
+            pathBox2.Font = new Font("Perpetua Titling MT", 8F, FontStyle.Bold, GraphicsUnit.Point);
+            pathBox2.ForeColor = Color.DarkRed;
+            pathBox2.Location = new Point(-4, 291);
+            pathBox2.Multiline = true;
+            pathBox2.Name = "pathBox2";
+            pathBox2.Size = new Size(397, 36);
+            pathBox2.TabIndex = 15;
+            pathBox2.TextAlign = HorizontalAlignment.Center;
+            pathBox2.Visible = false;
+            // 
             // MS4SMD5Hasher
             // 
             AutoScaleDimensions = new SizeF(10F, 16F);
@@ -154,6 +212,9 @@
             BackgroundImage = Properties.Resources.beermaf;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(390, 561);
+            Controls.Add(label1);
+            Controls.Add(encodeModeButton);
+            Controls.Add(compareModeButton);
             Controls.Add(themeBox);
             Controls.Add(filenameBox);
             Controls.Add(closeButton);
@@ -162,6 +223,7 @@
             Controls.Add(startButton);
             Controls.Add(browseButton);
             Controls.Add(pathBox);
+            Controls.Add(pathBox2);
             DoubleBuffered = true;
             Font = new Font("Perpetua Titling MT", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             FormBorderStyle = FormBorderStyle.None;
@@ -190,5 +252,10 @@
         private TextBox filenameBox;
         private CheckBox checkBox2;
         private ComboBox themeBox;
+        private Label orLabel;
+        private Button compareModeButton;
+        private Button encodeModeButton;
+        private Label label1;
+        private TextBox pathBox2;
     }
 }

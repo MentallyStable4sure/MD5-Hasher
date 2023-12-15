@@ -7,18 +7,21 @@ namespace MS4S_MD5Hasher
         private string separator = ":";
 
         private Hasher hasher;
+        private HashComparer comparer;
+        private Presenter presenter;
 
         public MS4SMD5Hasher()
         {
             InitializeComponent();
             new ThemeController(this, themeBox);
             hasher = new Hasher(folderBrowser);
+            comparer = new HashComparer(pathBox, pathBox2);
+            presenter = new Presenter(this);
 
-            ShowRestUI(false);
-            loadingAnimation.Visible = false;
+            //ShowRestUI(false);
 
-            pathBox.PlaceholderText = "Choose path where to take files to encode";
-            pathBox.Text = string.Empty;
+            //pathBox.PlaceholderText = "Choose path where to take files to encode";
+            //pathBox.Text = string.Empty;
         }
 
         private void button1_Click(object sender, EventArgs e) => BrowseDirectory();
@@ -47,10 +50,10 @@ namespace MS4S_MD5Hasher
             folderBrowser.InitialDirectory = path;
             pathBox.Text = path;
 
-            ShowRestUI(true);
+            //ShowRestUI(true);
         }
 
-        public void ShowRestUI(bool state)
+        public void ShowCompareUI(bool state)
         {
             startButton.Visible = state;
             filenameBox.Visible = state;
@@ -73,5 +76,10 @@ namespace MS4S_MD5Hasher
         }
 
         private void closeButton_Click(object sender, EventArgs e) => Application.Exit();
+
+        private void compareModeButton_Click(object sender, EventArgs e)
+        {
+            comparer
+        }
     }
 }
