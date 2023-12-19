@@ -65,12 +65,12 @@ namespace MS4S_MD5Hasher.Handlers
             string abosulteDirectory = folderBrowser.SelectedPath;
             string hashListFile = Path.Combine(abosulteDirectory, $"{customFilename}{FILE_FORMAT}");
 
-            if (File.Exists(hashListFile)) File.Delete(hashListFile); //basically if we already have those just delete it and create again since its easier then parse it over
-            File.Create(hashListFile).Close();
+            if (File.Exists(hashListFile)) File.Delete(hashListFile); //basically if we already have those just delete it so we exclude it from checksum
 
             int counter = 0;
             string[] allFiles = Directory.GetFiles(abosulteDirectory, "*.*", SearchOption.AllDirectories); //get all files from main path and its subfolders
             string[] lines = new string[allFiles.Length];
+            File.Create(hashListFile).Close(); //create again
 
             //lookup for all files contained in directory including subfolders
             foreach (string file in allFiles)
