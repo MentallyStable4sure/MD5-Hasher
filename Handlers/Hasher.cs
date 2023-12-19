@@ -69,7 +69,8 @@ namespace MS4S_MD5Hasher.Handlers
 
             int counter = 0;
             string[] allFiles = Directory.GetFiles(abosulteDirectory, "*.*", SearchOption.AllDirectories); //get all files from main path and its subfolders
-            string[] lines = new string[allFiles.Length];
+
+            List<string> lines = new List<string>();
             File.Create(hashListFile).Close(); //create again
 
             //lookup for all files contained in directory including subfolders
@@ -79,14 +80,14 @@ namespace MS4S_MD5Hasher.Handlers
                 {
                     FileInfo info = new FileInfo(file);
                     string filePath = info.FullName;
-                    if (filePath == hashListFile) continue;
+                    if (filePath == hashListFile || file.Length <= 1) continue;
                     {
                         using (var stream = File.OpenRead(filePath))
                         {
                             byte[] fileMD5 = md5.ComputeHash(stream); //hash each file
                             string hash = BitConverter.ToString(fileMD5).Replace("-", "").ToLower(); //convert it to a web and more readable string
                             string currDir = Path.GetRelativePath(abosulteDirectory, filePath); //getting the relative path so its not a long version but /{subfolder}/{item}
-                            lines[counter] = $"{currDir}{customSeparator}{hash}"; //set it to our line formatted as we wanted
+                            lines.Add($"{currDir}{customSeparator}{hash}"); //set it to our line formatted as we wanted
                         }
                         counter++;
                     }
@@ -94,7 +95,7 @@ namespace MS4S_MD5Hasher.Handlers
             }
 
             uiData.PathBox.Text = "Writing hashes to a file...";
-            WriteToFile(hashListFile, lines);
+            WriteToFile(hashListFile, lines.ToArray());
             uiData.PathBox.Text = cachedPath;
         }
 
