@@ -81,16 +81,14 @@ namespace MS4S_MD5Hasher.Handlers
                     FileInfo info = new FileInfo(file);
                     string filePath = info.FullName;
                     if (filePath == hashListFile || file.Length <= 1) continue;
+                    using (var stream = File.OpenRead(filePath))
                     {
-                        using (var stream = File.OpenRead(filePath))
-                        {
-                            byte[] fileMD5 = md5.ComputeHash(stream); //hash each file
-                            string hash = BitConverter.ToString(fileMD5).Replace("-", "").ToLower(); //convert it to a web and more readable string
-                            string currDir = Path.GetRelativePath(abosulteDirectory, filePath); //getting the relative path so its not a long version but /{subfolder}/{item}
-                            lines.Add($"{currDir}{customSeparator}{hash}"); //set it to our line formatted as we wanted
-                        }
-                        counter++;
+                        byte[] fileMD5 = md5.ComputeHash(stream); //hash each file
+                        string hash = BitConverter.ToString(fileMD5).Replace("-", "").ToLower(); //convert it to a web and more readable string
+                        string currDir = Path.GetRelativePath(abosulteDirectory, filePath); //getting the relative path so its not a long version but /{subfolder}/{item}
+                        lines.Add($"{currDir}{customSeparator}{hash}"); //set it to our line formatted as we wanted
                     }
+                    counter++;
                 }
             }
 

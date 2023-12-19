@@ -1,5 +1,5 @@
-﻿using MS4S_MD5Hasher.Data;
-using System.Text;
+﻿using System.Text;
+using MS4S_MD5Hasher.Data;
 
 namespace MS4S_MD5Hasher.Handlers
 {
@@ -39,7 +39,7 @@ namespace MS4S_MD5Hasher.Handlers
 
             if (data.PathBox.Text.Length < 1 || data.PathBox2.Text.Length < 1)
             {
-                MessageBox.Show("[Error] Please provide both files to check and their separators, they should be text formatted");
+                MessageBox.Show("[ERROR] Please provide both files to check and their separators, they should be text formatted");
                 return;
             }
 
@@ -58,51 +58,58 @@ namespace MS4S_MD5Hasher.Handlers
 
             if(!isEqualLength)
             {
-                info.AppendLine("[Error] No need to check further since length arent matching, they are NOT equal");
+                info.AppendLine("[ERROR] Length arent matching, they are NOT equal");
+            }
+
+            List<string> filesToUpdate = new List<string>();
+
+            filesToUpdate = CheckPair(firstFileLines, secondFileLines, firstSeparator, secondSeparator);
+            var reverseFiles = CheckPair(secondFileLines, firstFileLines, secondSeparator, firstSeparator, filesToUpdate);
+            foreach (string file in reverseFiles)
+            {
+                filesToUpdate.Add(file);
+            }
+
+            if(filesToUpdate.Count > 0)
+            {
+                info.AppendLine("Files needs to be updated (their hashes aren't matching or not found in one of files):\n\n");
+                foreach (string updateLine in filesToUpdate)
+                {
+                    info.AppendLine(updateLine.Split(firstSeparator)[0]);
+                }
+
                 SignWithDetails(info, firstFile, firstFileLines.Length, secondFile, secondFileLines.Length);
                 return;
             }
 
-            for (int i = 0; i < firstFileLines.Length; i++)
-            {
-                if (firstFileLines[i].Length <= 2) continue; //prob empty line we dont care about that
-                string[] split = firstFileLines[i].Split(firstSeparator);
-                if(split == null || split.Length < 2)
-                {
-                    info.AppendLine($"[Error] We tried to split hash with path in half but we couldn't, double check separator, you gave us: '{firstSeparator}', but looks like its not it");
-                    SignWithDetails(info, firstFile, firstFileLines.Length, secondFile, secondFileLines.Length);
-                    return;
-                }
-                string firstHash = split[1]; //first file separator TODO: custom player separator
-
-                if(!CheckPair(firstHash, secondFileLines, secondSeparator))
-                {
-                    info.AppendLine($"[Error] We tried our best my dudes, but nothing with this hash: {firstHash} was found in second file, you might wanna double check your separator or second file just doesnt have this hash..");
-                    SignWithDetails(info, firstFile, firstFileLines.Length, secondFile, secondFileLines.Length);
-                    return;
-                }
-            }
-
             info.AppendLine($"♡♡♡♡♡♡♡♡");
-            info.AppendLine($"[Good] They purrfectly matched each other, 100%");
+            info.AppendLine($"[SUCCESS] They purrfectly matched each other, 100%");
 
             SignWithDetails(info, firstFile, firstFileLines.Length, secondFile, secondFileLines.Length);
         }
 
-        private bool CheckPair(string firstHash, string[] whereToCheck, string separator = ":")
+        private List<string> CheckPair(string[] firstList, string[] secondList, string firstSeparator, string secondSeparator, List<string> itemsToIgnore = null)
         {
-            foreach (string secondLine in whereToCheck)
+            var ignored = itemsToIgnore == null ? new List<string>() : itemsToIgnore;
+
+            List<string> filesToUpdate = new List<string>();
+            foreach (string line in firstList)
             {
-                string[] split = secondLine.Split(separator);
-                if (split == null || split.Length < 2) return false; //wrong separator we couldnt cut
+                if (ignored.Count > 0 && ignored.Contains(line)) continue;
+                if (line.Length <= 2) continue; //prob empty line we dont care about that
 
-                string secondHash = secondLine.Split(separator)[1]; //second file separator TODO: custom player separator
-                if (secondHash != firstHash) continue; //didnt find match, check next
+                bool isFoundMatch = false;
+                foreach (string secondLine in secondList)
+                {
+                    if (ignored.Count > 0 && ignored.Contains(secondLine)) continue;
+                    if (secondLine.Length <= 2) continue; //prob same empty line we dont care about that
 
-                return true; //we did it boys, we found the pair
+                    if (secondLine.Split(secondSeparator)[1] != line.Split(firstSeparator)[1]) continue;
+                    isFoundMatch = true;
+                }
+                if (!isFoundMatch) filesToUpdate.Add(line.Split(firstSeparator)[0]);
             }
-
-            return false; //sadge, we did our best iterating entire stack but nothing was found :C
+            return filesToUpdate;
         }
 
         private void SignWithDetails(StringBuilder info, string firstFile, int firstFileLines, string secondFile, int secondFileLines)
