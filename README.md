@@ -1,12 +1,7 @@
 # MS4S MD5-Hasher
 
-![image](https://github.com/MentallyStable4sure/MD5-Hasher/assets/62771181/96df6e22-69d3-4f1b-af09-dd489b99a6d9) ![image](https://github.com/MentallyStable4sure/MD5-Hasher/assets/62771181/a2def17d-c18d-4766-b36d-d0270e945762) 
-
-<details>
-<summary>More Screenshots</summary>
-
-![image](https://github.com/MentallyStable4sure/MD5-Hasher/assets/62771181/840dd833-0688-4c87-bce1-8357b88b0ba1) ![image](https://github.com/MentallyStable4sure/MD5-Hasher/assets/62771181/19dfa0dd-5158-42b9-b930-bfdf1042ac1e)
-![image](https://github.com/MentallyStable4sure/MD5-Hasher/assets/62771181/a6c45ea1-acf8-452f-a728-0e61c41a5e53) ![image](https://github.com/MentallyStable4sure/MD5-Hasher/assets/62771181/412e6a84-c50f-4d7f-b90a-72863ab933e1)
+<img width=200 height=300 src=https://github.com/MentallyStable4sure/MD5-Hasher/assets/62771181/96df6e22-69d3-4f1b-af09-dd489b99a6d9> <img width=200 height=300 src=https://github.com/MentallyStable4sure/MD5-Hasher/assets/62771181/a2def17d-c18d-4766-b36d-d0270e945762>
+<img width=200 height=300 src=https://github.com/MentallyStable4sure/MD5-Hasher/assets/62771181/840dd833-0688-4c87-bce1-8357b88b0ba1> <img width=200 height=300 src=https://github.com/MentallyStable4sure/MD5-Hasher/assets/62771181/19dfa0dd-5158-42b9-b930-bfdf1042ac1e>
 
 
 </details>
