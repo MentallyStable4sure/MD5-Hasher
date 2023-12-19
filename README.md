@@ -69,7 +69,7 @@ Release\net7.0-windows\totalhashes.txt ♡♡♡♡ 837c3dc87f8b47074c5eedfaeae9
 
 ### What is planned and what is done already
 
-- ❌ Arguments-friendly (to launch app without UI and set arguments like --compare [path] pr --checksums [path])
+- ✅ Arguments-friendly (to launch app without UI and set arguments like --compare [path] or --compute [path]) [<a href=https://github.com/MentallyStable4sure/MS4SArgLiteHasher>done</a>]
 - ✅ Compare method as additional functionality
 - ✅ Checksum from directory for all the files inside folder and subfolder divided by separator ie [Path | Hash]
 - ✅ Themes (idk why tho)
